@@ -6,10 +6,12 @@
 	url = git@github.com:tum-ei-eda/M2-ISA-R-Perf.git
 [submodule "code_gen/generators/M2-ISA-R"]
 	path = code_gen/generators/M2-ISA-R
-	url = git@github.com:KK-4595/M2-ISA-R.git
+	url = git@github.com:PhilippvK/M2-ISA-R.git
+	branch = rvv-2024
 [submodule "code_gen/descriptions/core_dsl/etiss_arch_riscv"]
 	path = code_gen/descriptions/core_dsl/etiss_arch_riscv
-	url = git@github.com:tum-ei-eda/etiss_arch_riscv.git
+	url = git@github.com:danielschloms/etiss_arch_riscv.git
+	branch = daniel-dev
 [submodule "code_gen/descriptions/core_perf_dsl"]
 	path = code_gen/descriptions/core_perf_dsl
 	url = git@github.com:tum-ei-eda/CorePerfDSL-Examples.git
