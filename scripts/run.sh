@@ -2,7 +2,9 @@
 
 set -e
 
-. $(dirname "${0}")/../.env
+cd $(dirname $(realpath -s $0))
+. ../.env
+# . $(dirname "${0}")/../.env
 
 TARGET_SW=$1
 shift
@@ -18,6 +20,9 @@ do
 	CORE_SPECIFIED=1
     elif [ "$arg" = "cva6" ] && [ ${CORE_SPECIFIED} == 0 ]; then
 	CMD_OPTIONS="${CMD_OPTIONS} --core cva6"
+	CORE_SPECIFIED=1
+    elif [ "$arg" = "cv32e40xv" ] && [ ${CORE_SPECIFIED} == 0 ]; then
+	CMD_OPTIONS="${CMD_OPTIONS} --core cv32e40xv"
 	CORE_SPECIFIED=1
     else
 	CMD_OPTIONS="${CMD_OPTIONS} ${arg}"

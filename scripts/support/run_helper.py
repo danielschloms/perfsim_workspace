@@ -30,6 +30,8 @@ elif len(split:=args.targetSW.split(":")) == 2:
       targetSW = os.environ.get(targetSW_prefix + "EMBENCH") + "/" + split[1]
    elif split[0] == "dhry":
       targetSW = os.environ.get(targetSW_prefix + "DHRYSTONE_OFFSET") + "-" + split[1]
+   elif split[0] == "custom" and "cv32e40xv" in args.core:
+      targetSW = os.environ.get(targetSW_prefix + "CUSTOM") + "/" + split[1]   
    else:
       targetSW_failed = True
 else:
@@ -42,6 +44,7 @@ if targetSW_failed:
 if args.core == "cva6":
    sim_args += " --bootrom " + os.environ.get(targetSW_prefix + "BOOTROM")
    
+# sim_args += " -gdbh"
 # Execute
 simulator = os.environ.get("PSW_PERF_SIM")
 exe = simulator + "/run_simulator.py " + targetSW + sim_args
