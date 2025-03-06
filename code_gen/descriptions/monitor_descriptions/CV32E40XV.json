@@ -1,7 +1,7 @@
 {
     "trace": {
         "name": "CV32E40XV",
-	    "core": "RV32IMACFD",
+	    "core": "RV32IMACFDV",
         "setId": "Manual",
         "traceValues": [
             {
@@ -26,6 +26,20 @@
             },
             {
                 "name": "rs2_data",
+                "type": "uint64_t"
+            },
+            {
+                "name": "vs1",
+                "type": "uint64_t"
+            }
+            ,
+            {
+                "name": "vs2",
+                "type": "uint64_t"
+            }
+            ,
+            {
+                "name": "vd",
                 "type": "uint64_t"
             }
         ],
@@ -1047,6 +1061,28 @@
                     {
                         "traceValue": "brTarget",
                         "description": "($reg{$bitfield{rs1}} + (((int16_t)($bitfield{imm} << 4)) >> 4)) & -2U"
+                    },
+                    {
+                        "traceValue": "pc",
+                        "description": "$pc"
+                    }
+                ]
+            },
+            {
+                "name": "VADD_VV",
+                "id": 52,
+                "mappings": [
+                    {
+                        "traceValue": "vs1",
+                        "description": "$bitfield{rs1}"
+                    },
+                    {
+                        "traceValue": "vs2",
+                        "description": "$bitfield{vs2}"
+                    },
+                    {
+                        "traceValue": "vd",
+                        "description": "$bitfield{vd}"
                     },
                     {
                         "traceValue": "pc",
