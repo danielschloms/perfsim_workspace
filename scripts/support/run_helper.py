@@ -28,6 +28,8 @@ if len(split:=args.targetSW.split(":")) == 1:
 elif len(split:=args.targetSW.split(":")) == 2:
    if split[0] == "em":
       targetSW = os.environ.get(targetSW_prefix + "EMBENCH") + "/" + split[1]
+   elif split[0] == "custom":
+      targetSW = os.environ.get(targetSW_prefix + "CUSTOM") + "/" + split[1]
    elif split[0] == "dhry":
       targetSW = os.environ.get(targetSW_prefix + "DHRYSTONE_OFFSET") + "-" + split[1]
    else:
@@ -41,6 +43,9 @@ if targetSW_failed:
 # Resolve BOOTROM (if applicable)
 if args.core == "cva6":
    sim_args += " --bootrom " + os.environ.get(targetSW_prefix + "BOOTROM")
+
+# sim_args += " -gdb"
+# sim_args += " -gdbh 1"
    
 # Execute
 simulator = os.environ.get("PSW_PERF_SIM")

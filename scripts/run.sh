@@ -2,19 +2,29 @@
 
 set -e
 
-. $(dirname "${0}")/../.env
+cd $WS_PATH/gen_perfsim
+. .env
+# . $ENVPATH
+# . $(dirname "${0}")/../.env
 
-TARGET_SW=$1
+SW_DIR=$1
+# SW_NAME=$(basename "$2")
+SW_NAME=$2
+TARGET_SW="$SW_DIR:$SW_NAME"
 shift
-
+shift
 CMD_OPTIONS=""
 CORE_SPECIFIED=0
 
 while [ "$#" -gt 0 ];
 do
-    arg="$1"
+    # arg=$(basename "$1")
+    arg=$1
     if [ "$arg" = "cv32e40p" ] && [ ${CORE_SPECIFIED} == 0 ]; then
 	CMD_OPTIONS="${CMD_OPTIONS} --core cv32e40p"
+	CORE_SPECIFIED=1
+    elif [ "$arg" = "Vicuna" ] && [ ${CORE_SPECIFIED} == 0 ]; then
+	CMD_OPTIONS="${CMD_OPTIONS} --core Vicuna"
 	CORE_SPECIFIED=1
     elif [ "$arg" = "cva6" ] && [ ${CORE_SPECIFIED} == 0 ]; then
 	CMD_OPTIONS="${CMD_OPTIONS} --core cva6"

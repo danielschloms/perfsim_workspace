@@ -46,7 +46,6 @@ argParser.add_argument("sourceDir", help="Path to source directory containing fi
 args = argParser.parse_args()
 
 sourceDir = pathlib.Path(args.sourceDir).resolve()
-
 ## GATHER SOURCE FILES ##
 
 modelName = sourceDir.name
