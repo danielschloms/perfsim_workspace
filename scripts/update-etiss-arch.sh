@@ -22,5 +22,6 @@ git restore ArchImpl/RV32IMACFDV/RV32IMACFDVGDBCore.h
 # git diff
 # git commit -m 'update rvv arch'
 
-cd $WS_PATH/gen_perfsim
-./scripts/setup_workspace.sh
+cd $WS_PATH/gen_perfsim/etiss-perf-sim
+./rebuild.sh
+# ./scripts/setup_workspace.sh
