@@ -21,16 +21,31 @@ do
     # arg=$(basename "$1")
     arg=$1
     if [ "$arg" = "cv32e40p" ] && [ ${CORE_SPECIFIED} == 0 ]; then
-	CMD_OPTIONS="${CMD_OPTIONS} --core cv32e40p"
-	CORE_SPECIFIED=1
+        CMD_OPTIONS="${CMD_OPTIONS} --core cv32e40p"
+        CORE_SPECIFIED=1
     elif [ "$arg" = "Vicuna" ] && [ ${CORE_SPECIFIED} == 0 ]; then
-	CMD_OPTIONS="${CMD_OPTIONS} --core Vicuna"
-	CORE_SPECIFIED=1
+        CMD_OPTIONS="${CMD_OPTIONS} --core Vicuna"
+        CORE_SPECIFIED=1
+    elif [ "$arg" = "Vicuna_zvl64b" ] && [ ${CORE_SPECIFIED} == 0 ]; then
+        CMD_OPTIONS="${CMD_OPTIONS} --core Vicuna_zvl64b"
+        CORE_SPECIFIED=1
+    elif [ "$arg" = "Vicuna_zvl128b" ] && [ ${CORE_SPECIFIED} == 0 ]; then
+        CMD_OPTIONS="${CMD_OPTIONS} --core Vicuna_zvl128b"
+        CORE_SPECIFIED=1
+    elif [ "$arg" = "Vicuna_zvl256b" ] && [ ${CORE_SPECIFIED} == 0 ]; then
+        CMD_OPTIONS="${CMD_OPTIONS} --core Vicuna_zvl256b"
+        CORE_SPECIFIED=1
+    elif [ "$arg" = "Vicuna_zvl512b" ] && [ ${CORE_SPECIFIED} == 0 ]; then
+        CMD_OPTIONS="${CMD_OPTIONS} --core Vicuna_zvl512b"
+        CORE_SPECIFIED=1
+    elif [ "$arg" = "Vicuna_zvl1024b" ] && [ ${CORE_SPECIFIED} == 0 ]; then
+        CMD_OPTIONS="${CMD_OPTIONS} --core Vicuna_zvl1024b"
+        CORE_SPECIFIED=1
     elif [ "$arg" = "cva6" ] && [ ${CORE_SPECIFIED} == 0 ]; then
-	CMD_OPTIONS="${CMD_OPTIONS} --core cva6"
-	CORE_SPECIFIED=1
+        CMD_OPTIONS="${CMD_OPTIONS} --core cva6"
+        CORE_SPECIFIED=1
     else
-	CMD_OPTIONS="${CMD_OPTIONS} ${arg}"
+	    CMD_OPTIONS="${CMD_OPTIONS} ${arg}"
     fi
     shift
 done

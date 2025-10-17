@@ -2,11 +2,13 @@
 import argparse
 import os
 import sys
+import pathlib
 
 # Read input arguments
 argParser = argparse.ArgumentParser()
 argParser.add_argument("targetSW", help="Target software handle (e.g.: dhry, em:cubic)")
 argParser.add_argument("-c", "--core", help="Target core architecture [cv32e40p | cva6]")
+argParser.add_argument("-dp", "--dyn_path", help="Specify a path for dynamic .ini files")
 args, args_passThrough = argParser.parse_known_args()
 
 sim_args = ""
@@ -17,9 +19,11 @@ if args.core is None:
 else:
    sim_args += " --core " + args.core
 
+ENV_CORE = "VICUNA" if "VICUNA" in args.core.upper() else args.core.upper()
+
 # Resolve TARGET_SW
 targetSW_failed = False
-targetSW_prefix = "PSW_TARGETSW_" + args.core.upper() + "_"
+targetSW_prefix = "PSW_TARGETSW_" + ENV_CORE + "_"
 if len(split:=args.targetSW.split(":")) == 1:
    if split[0] == "dhry":
       targetSW = os.environ.get(targetSW_prefix + "DHRYSTONE_DEFAULT")
@@ -44,8 +48,13 @@ if targetSW_failed:
 if args.core == "cva6":
    sim_args += " --bootrom " + os.environ.get(targetSW_prefix + "BOOTROM")
 
-# sim_args += " -gdb"
-# sim_args += " -gdbh 1"
+if args.dyn_path:
+   dyn_dir = pathlib.Path(args.dyn_path).resolve()
+   dyn_dir.mkdir(exist_ok=True, parents=True)
+   if not dyn_dir.exists():
+      print(f"ERROR: .ini file directory {dyn_dir} does not exist")
+      exit(1)
+   sim_args += f" --dyn_path {args.dyn_path}"
    
 # Execute
 simulator = os.environ.get("PSW_PERF_SIM")
