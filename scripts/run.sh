@@ -2,7 +2,9 @@
 
 set -e
 
-cd $WS_PATH/gen_perfsim
+SCRIPTS_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+PERFSIM_DIR="$(dirname "$SCRIPTS_DIR")"
+cd $PERFSIM_DIR
 . .env
 # . $ENVPATH
 # . $(dirname "${0}")/../.env

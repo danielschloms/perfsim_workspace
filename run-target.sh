@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+PERFSIM_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+PROJECT_ROOT_DIR="$(dirname "$PERFSIM_DIR")"
+
 TARGET_GROUP="custom"
 
 GCC_ARCH="rv32im_zve32x"
@@ -56,22 +59,22 @@ echo "Running $TARGET_SW build with ${GCC_ARCH}_$ZVL_STRING and VLANE_WIDTH ${VL
 ARCH_SUBPATH="$GCC_ARCH/$ZVL_STRING/$VLANE_STRING"
 TARGET_SW_EXPLICIT=$GCC_ARCH/$ZVL_STRING/bin/$TARGET_SW
 
-OUT_DIR="$WS_PATH/gen_perfsim/out/$ARCH_SUBPATH/$TARGET_SW"
-DYN_PATH="$WS_PATH/gen_perfsim/etiss-perf-sim/simulator/dyn_inis/$ARCH_SUBPATH/$TARGET_SW"
+OUT_DIR="$PERFSIM_DIR/out/$ARCH_SUBPATH/$TARGET_SW"
+DYN_PATH="$PERFSIM_DIR/etiss-perf-sim/simulator/dyn_inis/$ARCH_SUBPATH/$TARGET_SW"
 mkdir -p $OUT_DIR
 PARAMS="--dyn_path=$DYN_PATH -tp=$OUT_DIR -ta=$OUT_DIR $GDB_FLAG"
 # PARAMS="--dyn_path=$DYN_PATH $GDB_FLAG"
 # PARAMS="-tp=$OUT_DIR"
 
-COMPARISON_DIR="$WS_PATH/rvv_testing/comparison"
-VICUNA_DIR="$WS_PATH/vicuna2_tinyml_benchmarking"
+COMPARISON_DIR="$PROJECT_ROOT_DIR/Perf_Comparison/comparison"
+VICUNA_DIR="$PROJECT_ROOT_DIR/Vicuna2"
 TRACE_DIR="$COMPARISON_DIR/etiss/$ARCH_SUBPATH"
 mkdir -p $TRACE_DIR
 
 export VLEN=$VLEN
 export VLANE_WIDTH=$VLANE_WIDTH
 
-cd $WS_PATH/gen_perfsim
+cd $PERFSIM_DIR
 
 ./scripts/run.sh $TARGET_GROUP $TARGET_SW_EXPLICIT $TARGET_ARCH $PARAMS
 TRACE_FILE=$TRACE_DIR/${TARGET_SW}_trace.txt
