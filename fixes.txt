@@ -1,0 +1,8 @@
+scripts:
+	setup_workspace.sh: Asks for python3.10, 3.12 seems to work, so remove check
+
+etiss-perf-sim/etiss_plugins/SoftwareEvalLib/libs/backends/include/api/softwareEval-backends:
+	Channel.h: include <cstdint>
+
+etiss-perf-sim/etiss_plugins/SoftwareEvalLib:
+	PerformanceEstimatorPlugin: no deletes in destructor to get rid of segfault
