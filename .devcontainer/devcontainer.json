@@ -1,0 +1,41 @@
+{
+  "image": "perfsim-img",
+  "name": "Perfsim Docker Image",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/${localEnv:USER}/${localWorkspaceFolderBasename},type=bind",
+  "mounts": [
+    "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+    "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.ssh,target=/home/${localEnv:USER}/.ssh,type=bind,consistency=cached"
+  ],
+  "runArgs": [
+    "--net=host",
+    "--pid=host",
+    "--ipc=host",
+    "--hostname=perfsim",
+    "--add-host=perfsim:127.0.0.1",
+    "--name=perfsim",
+    "-e",
+    "DISPLAY=${env:DISPLAY}"
+  ],
+  "containerEnv": {
+    "DISPLAY": "unix:0"
+    // "WS_PATH": "/home/${localEnv:USER}/${localWorkspaceFolderBasename}"
+  },
+  "workspaceFolder": "/home/${localEnv:USER}/${localWorkspaceFolderBasename}",
+  "remoteUser": "${localEnv:USER}"
+  // Add VSCode extensions here
+  // "customizations": {
+  //   "vscode": {
+  //     "extensions": [
+  //       "ms-vscode.cpptools",
+  //       "ms-vscode.cmake-tools",
+  //       "xaver.clang-format",
+  //       "ms-python.python",
+  //       "ms-python.black-formatter",
+  //       "rioj7.command-variable",
+  //       "mhutchie.git-graph",
+  //       "Gruntfuggly.todo-tree"
+  //     ]
+  //   }
+  // }
+}
