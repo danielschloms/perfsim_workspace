@@ -5,9 +5,6 @@ PROJECT_ROOT_DIR="$(dirname "$DOCKER_DIR")"
 PROJECT_ROOT_DIRNAME="$(basename "$PROJECT_ROOT_DIR")"
 IMAGE="perfsim-img"
 CONTAINER_NAME="perfsim"
-echo "$DOCKER_DIR"
-echo "$PROJECT_ROOT_DIR"
-echo "$PROJECT_ROOT_DIRNAME"
 if docker ps -a --filter "status=exited" | grep -q -E " perfsim$"; then
   echo "Stopped container found, starting..."
   docker start $CONTAINER_NAME
