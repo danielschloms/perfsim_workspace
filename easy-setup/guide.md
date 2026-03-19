@@ -12,6 +12,7 @@ Using both methods might result in conflicts, but creating a container first thr
 There are a few issues when trying to setup the workspace, which are described in `fixes/fixes.txt`.
 Since I don't want to mess around with the submodule structure and pull in different repositories,
 `fixes/apply-fixes.sh` will simply replace the offending files.
+Before applying the fixes, pull in submodules with `git submodule update --init --recursive`.
 
 ## Setting up the workspace
 To set up the performance simulation workspace, as well run performance models, follow the instructions in `README.md`.
