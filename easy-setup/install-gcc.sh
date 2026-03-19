@@ -1,4 +1,4 @@
-#!/usb/bin/env bash
+#!/usr/bin/env bash
 
 # Terminal color
 MAGENTA='\033[0;35m'
