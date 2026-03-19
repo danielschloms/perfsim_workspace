@@ -4,5 +4,5 @@ scripts:
 etiss-perf-sim/etiss_plugins/SoftwareEvalLib/libs/backends/include/api/softwareEval-backends:
 	Channel.h: include <cstdint>
 
-etiss-perf-sim/etiss_plugins/SoftwareEvalLib:
-	PerformanceEstimatorPlugin: no deletes in destructor to get rid of segfault
+etiss-perf-sim/etiss_plugins/SoftwareEvalLib/src:
+	PerformanceEstimatorPlugin.cpp: no deletes in destructor to get rid of segfault
