@@ -18,7 +18,9 @@ git submodule update --init --recursive
 $PROJECT_ROOT_DIR/fixes/apply-fixes.sh
 
 # Setup Perfsim workspace
-$PROJECT_ROOT_DIR/scripts/setup_workspace.sh
+# $PROJECT_ROOT_DIR/scripts/setup_workspace.sh
 
 # Install RISC-V GCC
 $SETUP_DIR/install-gcc.sh
+
+echo "Done, now run $PROJECT_ROOT_DIR/scripts/setup_workspace.sh"
