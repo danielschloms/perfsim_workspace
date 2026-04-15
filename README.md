@@ -5,7 +5,7 @@ Example workspace for software performance simulation with ETISS-based performan
 This is an example workspace for the ETISS-based performance simulator. It contains:
 - The ETISS-based performance simulator etiss-perf-sim
 - The M2-ISA-R-Perf code generator to adjust the performance models
-- The Embench benchmark suite, compiled for the CV32E40P (RV32IM) and CVA6 (RV64IM), as a target-software example
+- The Embench benchmark suite, compiled for RV32IM and RV64IM, as target-software examples
 
 ## First Time Setup
 
@@ -71,3 +71,16 @@ It is compatible with the following submodule versions:
 | M2-ISA-R-Perf | v2.0 |
 | etiss_arch_riscv | WiP |
 | CorePerfDSL-Examples | v2.0 |
+
+## Acknowledgment
+
+<table>
+      <tr>
+            <td>
+                  <img src="BMFTR_logo_gefoerdert-de.svg" width=200/>
+            </td>
+            <td>
+                  This research is in partially funded by the German Federal Ministry of Research, Technology and Space (BMFTR) within the project <a href="https://project.edacentrum.de/generiot/">GenerIoT</a> (grant number 01IS22084G).
+            </td>
+      </tr>
+</table>
